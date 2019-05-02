@@ -29,5 +29,6 @@ CHECK:
 		printf("Do you want to continue? Y/N\n");
 		scanf("\n%c",&c);
 	}while(c=='Y'||c=='y');
+	printf("%s\n",LINE);
 		return 0;
 }

@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<string.h>
+#include<time.h>
 #include "grocery.h"
 
 void update_price(item *old) {
@@ -17,6 +18,8 @@ void update_quantity(item *old) {
 }
 void add(void)
 {
+	time_t t=time(NULL);
+	struct tm ti=*localtime(&t);
 	int i,opt,choice;
 	char c[500],*ch;
 	item old,new;
@@ -32,7 +35,7 @@ SELECT:
 		printf("Enter the item to be added in the order:Item name,price,quantity\n");
 		scanf("\n%s%f%f",new.name,&new.price,&new.quantity);
 		new.total=new.price*new.quantity;
-		fprintf(fp,"%-18s %10.2f %10.2f %15.2f\n",new.name,new.price,new.quantity,new.total);
+		fprintf(fp,"%-18s %10.2f %10.2f %15.2f %5d/%d/%d %5d:%d:%d\n",new.name,new.price,new.quantity,new.total,ti.tm_mday,ti.tm_mon+1,ti.tm_year+1900,ti.tm_hour,ti.tm_min,ti.tm_sec);
 		fclose(fp);
 		break;
 	case 2:
@@ -58,7 +61,7 @@ SELECT:
 						update_quantity(&old);
 					}	
 			new.total=old.price*old.quantity;
-			fprintf(nfp,"%-18s %10.2f %10.2f %15.2f\n",old.name,old.price,old.quantity,new.total);
+			fprintf(nfp,"%-18s %10.2f %10.2f %15.2f %5d/%d/%d %5d:%d:%d\n",old.name,old.price,old.quantity,new.total,ti.tm_mday,ti.tm_mon+1,ti.tm_year+1900,ti.tm_hour,ti.tm_min,ti.tm_sec);
 			continue;
 			}
 			fputs(c,nfp);

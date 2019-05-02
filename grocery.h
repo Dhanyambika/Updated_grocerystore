@@ -1,10 +1,15 @@
-#ifndef GROCERY_H
+#ifndef GROCERY_Hi
 #define GROCERY_H
 
-#define DECOR "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
-#define LINE "----------------------------------------------------------"
+#include<time.h>
+#define DECOR "*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*"
+#define LINE "-----------------------------------------------------------------------------------"
 
 extern int count;
+
+time_t t;
+struct tm ti;
+
 typedef struct{
 	char name[20];
 	float price;
