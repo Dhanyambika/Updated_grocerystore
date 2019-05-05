@@ -11,7 +11,7 @@ void view(void) {
 	printf("%s\n",LINE);
 
 	FILE *fp;
-	sprintf(day,"%d_%d_%d",ti.tm_mday,ti.tm_mon+1,ti.tm_year+1900);
+	sprintf(day,"%s/%d_%d_%d","files",ti.tm_mday,ti.tm_mon+1,ti.tm_year+1900);
 	strcat(day,".txt");
 	fp=fopen(day,"r+");
 	if(fp==NULL)

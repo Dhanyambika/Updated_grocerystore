@@ -24,7 +24,7 @@ void add(void)
 	char c[500],*ch,day[30];
 	item old,new;
 	FILE *fp,*nfp;
-	sprintf(day,"%d_%d_%d",ti.tm_mday,ti.tm_mon+1,ti.tm_year+1900);
+	sprintf(day,"%s/%d_%d_%d","files",ti.tm_mday,ti.tm_mon+1,ti.tm_year+1900);
 	strcat(day,".txt");
 	fp=fopen(day,"ab+");
 	if(fp==NULL)
