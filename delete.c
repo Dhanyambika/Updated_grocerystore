@@ -6,10 +6,12 @@ void delete(void) {
 	item old,new;
 	time_t t=time(NULL);
 	struct tm ti=*localtime(&t);
-	char *ch,c[100];
+	char *ch,c[100],day[50];
 	int i,len,opt;
 	FILE *fp1,*fp2;
-	fp1=fopen("grocery.txt","r");
+	sprintf(day,"%d_%d_%d",ti.tm_mday,ti.tm_mon+1,ti.tm_year+1900);
+	strcat(day,".txt");
+	fp1=fopen(day,"r");
 	fp2=fopen("new.txt","w");
 	if(fp1==NULL||fp2==NULL)
 		printf("Error in creating file......\n");
@@ -27,8 +29,8 @@ SELECT:
 				fputs(c,fp2);
 		}
 		fclose(fp1);
-		remove("grocery.txt");
-		rename("new.txt","grocery.txt");
+		remove(day);
+		rename("new.txt",day);
 		fclose(fp2);
 		break;
 	case 2:
@@ -52,8 +54,8 @@ SELECT:
 			fputs(c,fp2);
 		}
 		fclose(fp1);
-		remove("grocery.txt");
-		rename("new.txt","grocery.txt");
+		remove(day);
+		rename("new.txt",day);
 		fclose(fp2);
 		break;
 	default: printf("Enter the correct choice\n");

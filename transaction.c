@@ -1,14 +1,17 @@
 #include<stdio.h>
+#include<string.h>
 #include "grocery.h"
 
 void transaction(void) {
 	int count=0,opt,day,month,year;
 	float total,grand_total;
-	char c[500];
+	char c[500],date[50];
 	time_t t=time(NULL);
 	struct tm ti=*localtime(&t);
 	FILE *fp;
-	fp=fopen("grocery.txt","r");
+	sprintf(date,"%d_%d_%d",ti.tm_mday,ti.tm_mon+1,ti.tm_year+1900);
+	strcat(date,".txt");
+	fp=fopen(date,"r");
 	if(fp==NULL)
 		printf("error in opening file....\n");
 SELECT:
@@ -26,8 +29,7 @@ SELECT:
 				{
 					fputs(c, stdout);
 					count++;
-				}else
-					printf("No transactions today\n");
+				}
 			}
 			break;
 		case 2:
@@ -39,8 +41,7 @@ SELECT:
 					fputs(c, stdout);
 					count++;
 					grand_total+=total;
-				}else
-					printf("No transactions today\n");
+				}
 			}
 			printf("%s\n",LINE);
 			printf("Grand total of transaction today=%7.2f\n",grand_total);
@@ -49,6 +50,8 @@ SELECT:
 			goto SELECT;
 			break;
 	}
+	if(count==0)
+		printf("No transactions today\n");
 	printf("Total number of transactions today=%d\n",count);				
 	fclose(fp);
 	printf("%s\n",LINE);

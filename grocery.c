@@ -5,10 +5,9 @@ int main()
 {
 	int i;
 	char c; 
-	system("clear");
-	printf("WELCOME TO GROCERY SHOP\n");
-	do {
-		printf("\n What you wanna do now??\n 1.View items\n 2. Add items to our stock\n 3. Item purchased from our store\n 4.. Total Transaction today\n");
+	while(1)
+	{
+		printf("\n What you wanna do now??\n 1. View items\n 2. Add items to our stock\n 3. Item purchased from our store\n 4. Total Transaction today\n 5. Quit\n");
 		scanf("%d",&i);
 CHECK:
 		switch(i)
@@ -21,14 +20,11 @@ CHECK:
 				break;
 			case 4:transaction();
 				break;
+			case 5:return 0;
 			default:printf("You entered an invalid option.Choose from the above options\n ");
 				scanf("%d",&i);
 				goto CHECK;
 		}
 		fflush(stdin);
-		printf("Do you want to continue? Y/N\n");
-		scanf("\n%c",&c);
-	}while(c=='Y'||c=='y');
-	printf("%s\n",LINE);
-		return 0;
+	}
 }
