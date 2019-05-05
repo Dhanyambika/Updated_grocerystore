@@ -5,6 +5,8 @@ int main()
 {
 	int i;
 	char c; 
+	system("clear");
+	printf("-------WELCOME------\n");
 	while(1)
 	{
 		printf("\n What you wanna do now??\n 1. View items\n 2. Add items to our stock\n 3. Item purchased from our store\n 4. Total Transaction today\n 5. Quit\n");

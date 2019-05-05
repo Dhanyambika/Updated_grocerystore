@@ -9,7 +9,7 @@ void transaction(void) {
 	time_t t=time(NULL);
 	struct tm ti=*localtime(&t);
 	FILE *fp;
-	sprintf(date,"%d_%d_%d",ti.tm_mday,ti.tm_mon+1,ti.tm_year+1900);
+	sprintf(date,"%s/%d_%d_%d","files",ti.tm_mday,ti.tm_mon+1,ti.tm_year+1900);
 	strcat(date,".txt");
 	fp=fopen(date,"r");
 	if(fp==NULL)

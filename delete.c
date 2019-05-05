@@ -9,7 +9,7 @@ void delete(void) {
 	char *ch,c[100],day[50];
 	int i,len,opt;
 	FILE *fp1,*fp2;
-	sprintf(day,"%d_%d_%d",ti.tm_mday,ti.tm_mon+1,ti.tm_year+1900);
+	sprintf(day,"%s/%d_%d_%d","files",ti.tm_mday,ti.tm_mon+1,ti.tm_year+1900);
 	strcat(day,".txt");
 	fp1=fopen(day,"r");
 	fp2=fopen("new.txt","w");
